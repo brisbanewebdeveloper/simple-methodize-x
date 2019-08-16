@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2019-present",
-  "date": "2019-08-16T12:43:10.290Z",
+  "date": "2019-08-16T15:13:14.781Z",
   "describe": "",
   "description": "Methodize a prototype method. Compliant to 8 arguments.",
   "file": "simple-methodize-x.js",
-  "hash": "d598ddc3e5329853843a",
+  "hash": "d126dcbae2e985070851",
   "license": "MIT",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -149,11 +149,38 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var strValue = String.prototype.valueOf;
+var tryStringObject = function tryStringObject(value) {
+	try {
+		strValue.call(value);
+		return true;
+	} catch (e) {
+		return false;
+	}
+};
+var toStr = Object.prototype.toString;
+var strClass = '[object String]';
+var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
+
+module.exports = function isString(value) {
+	if (typeof value === 'string') { return true; }
+	if (typeof value !== 'object') { return false; }
+	return hasToStringTag ? tryStringObject(value) : toStr.call(value) === strClass;
+};
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -180,13 +207,13 @@ var getMax = function getMax(a, b) {
   return a >= b ? a : b;
 };
 
-var assertIsFunction = function assertIsFunction(value) {
+var simple_bind_x_esm_assertIsFunction = function assertIsFunction(value) {
   if (typeof value !== 'function' && toStr.apply(value) !== funcType) {
     throw new TypeError(ERROR_MESSAGE + value);
   }
 };
 
-var pushAll = function pushAll(arrayLike, from) {
+var simple_bind_x_esm_pushAll = function pushAll(arrayLike, from) {
   var len = arrayLike.length;
   /* eslint-disable-next-line prefer-rest-params */
 
@@ -202,53 +229,53 @@ var pushAll = function pushAll(arrayLike, from) {
 var boundFns = [function zero(binder) {
   return function boundFn() {
     /* eslint-disable-next-line babel/no-invalid-this,prefer-rest-params */
-    return binder.apply(this, pushAll(arguments));
+    return binder.apply(this, simple_bind_x_esm_pushAll(arguments));
   };
 }, function one(binder, boundLength) {
   return function boundFn(a) {
     /* eslint-disable-next-line babel/no-invalid-this,prefer-rest-params */
-    return binder.apply(this, pushAll(arguments, boundLength, [a]));
+    return binder.apply(this, simple_bind_x_esm_pushAll(arguments, boundLength, [a]));
   };
 }, function two(binder, boundLength) {
   return function boundFn(a, b) {
     /* eslint-disable-next-line babel/no-invalid-this,prefer-rest-params */
-    return binder.apply(this, pushAll(arguments, boundLength, [a, b]));
+    return binder.apply(this, simple_bind_x_esm_pushAll(arguments, boundLength, [a, b]));
   };
 }, function three(binder, boundLength) {
   /* eslint-disable-next-line max-params */
   return function boundFn(a, b, c) {
     /* eslint-disable-next-line babel/no-invalid-this,prefer-rest-params */
-    return binder.apply(this, pushAll(arguments, boundLength, [a, b, c]));
+    return binder.apply(this, simple_bind_x_esm_pushAll(arguments, boundLength, [a, b, c]));
   };
 }, function four(binder, boundLength) {
   /* eslint-disable-next-line max-params */
   return function boundFn(a, b, c, d) {
     /* eslint-disable-next-line babel/no-invalid-this,prefer-rest-params */
-    return binder.apply(this, pushAll(arguments, boundLength, [a, b, c, d]));
+    return binder.apply(this, simple_bind_x_esm_pushAll(arguments, boundLength, [a, b, c, d]));
   };
 }, function five(binder, boundLength) {
   /* eslint-disable-next-line max-params */
   return function boundFn(a, b, c, d, e) {
     /* eslint-disable-next-line babel/no-invalid-this,prefer-rest-params */
-    return binder.apply(this, pushAll(arguments, boundLength, [a, b, c, d, e]));
+    return binder.apply(this, simple_bind_x_esm_pushAll(arguments, boundLength, [a, b, c, d, e]));
   };
 }, function six(binder, boundLength) {
   /* eslint-disable-next-line max-params */
   return function boundFn(a, b, c, d, e, f) {
     /* eslint-disable-next-line babel/no-invalid-this,prefer-rest-params */
-    return binder.apply(this, pushAll(arguments, boundLength, [a, b, c, d, e, f]));
+    return binder.apply(this, simple_bind_x_esm_pushAll(arguments, boundLength, [a, b, c, d, e, f]));
   };
 }, function seven(binder, boundLength) {
   /* eslint-disable-next-line max-params */
   return function boundFn(a, b, c, d, e, f, g) {
     /* eslint-disable-next-line babel/no-invalid-this,prefer-rest-params */
-    return binder.apply(this, pushAll(arguments, boundLength, [a, b, c, d, e, f, g]));
+    return binder.apply(this, simple_bind_x_esm_pushAll(arguments, boundLength, [a, b, c, d, e, f, g]));
   };
 }, function eight(binder, boundLength) {
   /* eslint-disable-next-line max-params */
   return function boundFn(a, b, c, d, e, f, g, h) {
     /* eslint-disable-next-line babel/no-invalid-this,prefer-rest-params */
-    return binder.apply(this, pushAll(arguments, boundLength, [a, b, c, d, e, f, g, h]));
+    return binder.apply(this, simple_bind_x_esm_pushAll(arguments, boundLength, [a, b, c, d, e, f, g, h]));
   };
 }];
 
@@ -301,7 +328,7 @@ var getResult = function getResult(target, boundArgs) {
 
 
 var bind = function bind(target, thisArg) {
-  assertIsFunction(target);
+  simple_bind_x_esm_assertIsFunction(target);
   /* eslint-disable-next-line prefer-rest-params */
 
   var bindArgs = arguments;
@@ -309,7 +336,7 @@ var bind = function bind(target, thisArg) {
 
   var binder = function binder() {
     /* eslint-disable-next-line prefer-rest-params */
-    var boundArgs = pushAll(arguments, ZERO, pushAll(bindArgs, argsOffset));
+    var boundArgs = simple_bind_x_esm_pushAll(arguments, ZERO, simple_bind_x_esm_pushAll(bindArgs, argsOffset));
     /* eslint-disable-next-line babel/no-invalid-this */
 
     return this instanceof bound ? getResult.apply(this, [target, boundArgs]) : target.apply(thisArg, boundArgs);
@@ -322,19 +349,147 @@ var bind = function bind(target, thisArg) {
 /* harmony default export */ var simple_bind_x_esm = (bind);
 
 
+// CONCATENATED MODULE: ./node_modules/is-primitive-x/dist/is-primitive-x.esm.js
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/**
+ * Returns true if the value is a primitive.
+ *
+ * @param {*} [val] - The value to test.
+ * @returns {boolean} True if a primitive, otherwise false..
+ */
+var isPrimitive = function isPrimitive(val) {
+  return _typeof(val) === 'object' ? val === null : typeof val !== 'function';
+};
+
+/* harmony default export */ var is_primitive_x_esm = (isPrimitive);
+
+
+// CONCATENATED MODULE: ./node_modules/has-boxed-string-x/dist/has-boxed-string-x.esm.js
+var string = 'a';
+var boxedString = {}.constructor(string);
+/**
+ * Check failure of by-index access of string characters (IE < 9)
+ * and failure of `0 in boxedString` (Rhino).
+ *
+ * `true` if no failure; otherwise `false`.
+ *
+ * @type boolean
+ */
+
+var hasBoxed = boxedString[0] === string && 0 in boxedString;
+/* harmony default export */ var has_boxed_string_x_esm = (hasBoxed);
+
+
+// EXTERNAL MODULE: ./node_modules/is-string/index.js
+var is_string = __webpack_require__(0);
+var is_string_default = /*#__PURE__*/__webpack_require__.n(is_string);
+
+// CONCATENATED MODULE: ./node_modules/split-if-boxed-bug-x/dist/split-if-boxed-bug-x.esm.js
+
+
+var EMPTY_STRING = '';
+var strSplit = EMPTY_STRING.split;
+var isStringFn = has_boxed_string_x_esm === false && typeof strSplit === 'function' && is_string_default.a;
+/**
+ * This method tests if a value is a string with the boxed bug; splits to an
+ * array for iteration; otherwise returns the original value.
+ *
+ * @param {*} [value] - The value to be tested.
+ * @returns {*} An array or characters if value was a string with the boxed bug;
+ *  otherwise the value.
+ */
+
+var splitIfBoxedBug = function splitIfBoxedBug(value) {
+  return isStringFn && isStringFn(value) ? strSplit.call(value, EMPTY_STRING) : value;
+};
+
+/* harmony default export */ var split_if_boxed_bug_x_esm = (splitIfBoxedBug);
+
+
+// CONCATENATED MODULE: ./node_modules/simple-call-x/dist/simple-call-x.esm.js
+
+
+
+var $TypeError = TypeError;
+var nativeApply = simple_bind_x_esm.apply,
+    nativeCall = simple_bind_x_esm.call;
+var $apply = simple_bind_x_esm(nativeCall, nativeApply);
+var toStringTag = simple_bind_x_esm(nativeApply, {}.toString);
+var simple_call_x_esm_ERROR_MESSAGE = ' is not a function';
+var simple_call_x_esm_funcType = '[object Function]';
+
+var simple_call_x_esm_assertIsFunction = function assertIsFunction(value) {
+  if (typeof value !== 'function' && toStringTag(value) !== simple_call_x_esm_funcType) {
+    throw new $TypeError(value + simple_call_x_esm_ERROR_MESSAGE);
+  }
+
+  return value;
+};
+
+var simple_call_x_esm_pushAll = function pushAll(arrayLike) {
+  var target = [];
+
+  if (typeof arrayLike !== 'string' && is_primitive_x_esm(arrayLike)) {
+    return target;
+  }
+
+  var iterable = split_if_boxed_bug_x_esm(arrayLike);
+  var len = iterable.length;
+
+  for (var i = 0; i < len; i += 1) {
+    target[target.length] = iterable[i];
+  }
+
+  return target;
+}; // eslint-disable jsdoc/check-param-names
+// noinspection JSCommentMatchesSignature
+
+/**
+ * The abstract operation Call is used to call the [[Call]] internal method of a function object.
+ *
+ * @function call
+ * @param {Function} F - The target function.
+ * @param {*} [V] - The context.
+ * @param {Array} [args] - Argument to call the function with.
+ * @throws {TypeError} If target is not a function.
+ * @returns {*} The the result of invoking the function.
+ * @see https://www.ecma-international.org/ecma-262/6.0/#sec-call
+ */
+// eslint-enable jsdoc/check-param-names
+
+
+var call = function call(F, V) {
+  /* eslint-disable-next-line prefer-rest-params */
+  return $apply(simple_call_x_esm_assertIsFunction(F), V, simple_call_x_esm_pushAll(arguments[2]));
+};
+
+/* harmony default export */ var simple_call_x_esm = (call);
+
+
 // CONCATENATED MODULE: ./dist/simple-methodize-x.esm.js
 
-var call = simple_bind_x_esm.call;
-var toStringTag = simple_bind_x_esm(call, {}.toString);
+var simple_methodize_x_esm_toStringTag = {}.toString;
 var simple_methodize_x_esm_ERROR_MESSAGE = 'methodize called on incompatible ';
 var simple_methodize_x_esm_funcType = '[object Function]';
 
 var simple_methodize_x_esm_assertIsFunction = function assertIsFunction(value) {
-  if (typeof value !== 'function' && toStringTag(value) !== simple_methodize_x_esm_funcType) {
+  if (typeof value !== 'function' && simple_call_x_esm(simple_methodize_x_esm_toStringTag, value) !== simple_methodize_x_esm_funcType) {
     throw new TypeError(simple_methodize_x_esm_ERROR_MESSAGE + value);
   }
 
   return value;
+};
+
+var simple_methodize_x_esm_pushAll = function pushAll(arrayLike, from) {
+  var len = arrayLike.length;
+  var target = [];
+
+  for (var i = from || 0; i < len; i += 1) {
+    target[target.length] = arrayLike[i];
+  }
+
+  return target;
 };
 /**
  * Methodize a prototype method. Compliant to 8 arguments.
@@ -346,7 +501,11 @@ var simple_methodize_x_esm_assertIsFunction = function assertIsFunction(value) {
 
 
 var simple_methodize_x_esm_methodize = function methodize(prototypeMethod) {
-  return simple_bind_x_esm(call, simple_methodize_x_esm_assertIsFunction(prototypeMethod));
+  simple_methodize_x_esm_assertIsFunction(prototypeMethod);
+  return function methodized() {
+    /* eslint-disable-next-line prefer-rest-params */
+    return simple_call_x_esm(prototypeMethod, arguments[0], simple_methodize_x_esm_pushAll(arguments, 1));
+  };
 };
 
 /* harmony default export */ var simple_methodize_x_esm = __webpack_exports__["default"] = (simple_methodize_x_esm_methodize);

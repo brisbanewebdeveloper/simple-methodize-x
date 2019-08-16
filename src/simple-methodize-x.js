@@ -1,16 +1,26 @@
-import bind from 'simple-bind-x';
+import call from 'simple-call-x';
 
-const {call} = bind;
-const toStringTag = bind(call, {}.toString);
+const toStringTag = {}.toString;
 const ERROR_MESSAGE = 'methodize called on incompatible ';
 const funcType = '[object Function]';
 
 const assertIsFunction = function assertIsFunction(value) {
-  if (typeof value !== 'function' && toStringTag(value) !== funcType) {
+  if (typeof value !== 'function' && call(toStringTag, value) !== funcType) {
     throw new TypeError(ERROR_MESSAGE + value);
   }
 
   return value;
+};
+
+const pushAll = function pushAll(arrayLike, from) {
+  const len = arrayLike.length;
+  const target = [];
+
+  for (let i = from || 0; i < len; i += 1) {
+    target[target.length] = arrayLike[i];
+  }
+
+  return target;
 };
 
 /**
@@ -21,7 +31,12 @@ const assertIsFunction = function assertIsFunction(value) {
  * @returns {Function} The static method.
  */
 const methodize = function methodize(prototypeMethod) {
-  return bind(call, assertIsFunction(prototypeMethod));
+  assertIsFunction(prototypeMethod);
+
+  return function methodized() {
+    /* eslint-disable-next-line prefer-rest-params */
+    return call(prototypeMethod, arguments[0], pushAll(arguments, 1));
+  };
 };
 
 export default methodize;
