@@ -1,6 +1,6 @@
 {
   "name": "simple-methodize-x",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Methodize a prototype method. Compliant to 8 arguments.",
   "homepage": "https://github.com/Xotic750/simple-methodize-x",
   "author": {
@@ -55,7 +55,8 @@
     "url": "https://github.com/Xotic750/simple-methodize-x/issues"
   },
   "dependencies": {
-    "simple-call-x": "^1.0.0"
+    "simple-call-x": "^1.0.1",
+    "util-pusher-x": "^1.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

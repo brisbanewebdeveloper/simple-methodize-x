@@ -1,4 +1,5 @@
 import call from 'simple-call-x';
+import pusher from 'util-pusher-x';
 
 const toStringTag = {}.toString;
 const ERROR_MESSAGE = 'methodize called on incompatible ';
@@ -10,17 +11,6 @@ const assertIsFunction = function assertIsFunction(value) {
   }
 
   return value;
-};
-
-const pushAll = function pushAll(arrayLike, from) {
-  const len = arrayLike.length;
-  const target = [];
-
-  for (let i = from || 0; i < len; i += 1) {
-    target[target.length] = arrayLike[i];
-  }
-
-  return target;
 };
 
 /**
@@ -35,7 +25,7 @@ const methodize = function methodize(prototypeMethod) {
 
   return function methodized() {
     /* eslint-disable-next-line prefer-rest-params */
-    return call(prototypeMethod, arguments[0], pushAll(arguments, 1));
+    return call(prototypeMethod, arguments[0], pusher(arguments, 1));
   };
 };
 

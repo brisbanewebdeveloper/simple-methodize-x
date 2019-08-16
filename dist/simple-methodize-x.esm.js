@@ -1,4 +1,5 @@
 import call from 'simple-call-x';
+import pusher from 'util-pusher-x';
 var toStringTag = {}.toString;
 var ERROR_MESSAGE = 'methodize called on incompatible ';
 var funcType = '[object Function]';
@@ -9,17 +10,6 @@ var assertIsFunction = function assertIsFunction(value) {
   }
 
   return value;
-};
-
-var pushAll = function pushAll(arrayLike, from) {
-  var len = arrayLike.length;
-  var target = [];
-
-  for (var i = from || 0; i < len; i += 1) {
-    target[target.length] = arrayLike[i];
-  }
-
-  return target;
 };
 /**
  * Methodize a prototype method. Compliant to 8 arguments.
@@ -34,7 +24,7 @@ var methodize = function methodize(prototypeMethod) {
   assertIsFunction(prototypeMethod);
   return function methodized() {
     /* eslint-disable-next-line prefer-rest-params */
-    return call(prototypeMethod, arguments[0], pushAll(arguments, 1));
+    return call(prototypeMethod, arguments[0], pusher(arguments, 1));
   };
 };
 
