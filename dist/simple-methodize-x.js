@@ -2,7 +2,7 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2019-present",
-  "date": "2019-08-16T19:20:42.973Z",
+  "date": "2019-08-18T18:54:42.045Z",
   "describe": "",
   "description": "Methodize a prototype method. Compliant to 8 arguments.",
   "file": "simple-methodize-x.js",
