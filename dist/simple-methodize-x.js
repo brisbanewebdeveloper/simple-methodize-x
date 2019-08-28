@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2019-present",
-  "date": "2019-08-28T14:43:07.106Z",
+  "date": "2019-08-28T16:35:08.067Z",
   "describe": "",
   "description": "Methodize a prototype method. Compliant to 8 arguments.",
   "file": "simple-methodize-x.js",
   "hash": "85e888214082bed89495",
   "license": "MIT",
-  "version": "1.0.3"
+  "version": "1.0.4"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
